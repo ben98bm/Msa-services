@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nos Services — MSA SERVICES</title>
+<meta name="description" content="Patrouille, remorquage et répartition : nos trois métiers au service de l'autoroute ILA TOUBA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/png" href="images/logo.png">
+<style>
+.service-detail { padding: 100px 0; }
+.service-detail:nth-child(odd) { background: var(--gray-50); }
+.service-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.service-detail.reverse .service-detail-grid { grid-template-columns: 1fr 1fr; direction: rtl; }
+.service-detail.reverse .service-detail-grid > * { direction: ltr; }
+.service-detail-image {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  height: 480px;
+}
+.service-detail-image img { width: 100%; height: 100%; object-fit: cover; }
+.service-detail-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 50%, rgba(30, 58, 138, 0.3));
+  z-index: 1;
+}
+.service-detail-icon-big {
+  position: absolute;
+  bottom: 24px; left: 24px;
+  width: 80px; height: 80px;
+  background: var(--grad-primary);
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  z-index: 2;
+  box-shadow: var(--shadow-xl);
+}
+.service-detail h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 18px;
+}
+.service-detail h2 span { color: var(--secondary); }
+.service-detail-tag {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(76, 160, 62, 0.1);
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border-radius: 50px;
+  margin-bottom: 14px;
+}
+.service-detail p { color: var(--gray-600); margin-bottom: 18px; font-size: 1.02rem; }
+.service-features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+.service-features-list .item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  background: white;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-100);
+}
+.service-features-list .item i {
+  color: var(--secondary);
+  font-size: 1.1rem;
+  margin-top: 3px;
+}
+.service-features-list .item span { font-size: 0.92rem; color: var(--gray-700); font-weight: 500; }
+
+@media(max-width: 992px) {
+  .service-detail-grid, .service-detail.reverse .service-detail-grid { grid-template-columns: 1fr; gap: 40px; direction: ltr; }
+  .service-detail-image { height: 350px; }
+  .service-features-list { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TOPBAR ===== -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-info">
+      <span><i class="fas fa-phone"></i>+221 33 867 93 14</span>
+      <span><i class="fas fa-envelope"></i> contact@msaservices.sn</span>
+      <span><i class="fas fa-clock"></i> 24h/24 — 7j/7</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="MSA Services"></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Accueil</a></li>
+      <li><a href="apropos.html" class="nav-link">À Propos</a></li>
+      <li><a href="services.html" class="nav-link active">Services</a></li>
+      <li><a href="evenements.html" class="nav-link">Événements</a></li>
+      <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="tel:+221" class="nav-link nav-cta"><i class="fas fa-headset"></i> Urgence 24/7</a></li>
+    </ul>
+    <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="page-header">
+  <div class="page-header-content">
+    <h1>Nos Services</h1>
+    <p>Trois métiers complémentaires pour assurer la sécurité et la fluidité de l'autoroute.</p>
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a>
+      <span>/</span>
+      <span>Services</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTRO SERVICES GRID ===== -->
+<section class="services-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Métiers</span>
+      <h2 class="section-title">Trois piliers <span>opérationnels</span></h2>
+      <p class="section-subtitle">Patrouille, remorquage et répartition : chaque service est conçu pour répondre aux exigences les plus strictes en matière de sécurité routière.</p>
+    </div>
+    <div class="services-grid">
+      <a href="#patrouille" class="service-card reveal" style="text-decoration:none;color:inherit;">
+        <div class="service-icon"><i class="fas fa-car-side"></i></div>
+        <h3>Patrouille</h3>
+        <p>Surveillance continue des voies par nos équipes mobiles spécialement formées.</p>
+        <span class="service-link">Détails <i class="fas fa-arrow-down"></i></span>
+      </a>
+      <a href="#remorquage" class="service-card reveal" style="text-decoration:none;color:inherit;">
+        <div class="service-icon"><i class="fas fa-truck-pickup"></i></div>
+        <h3>Remorquage</h3>
+        <p>Dépannage et évacuation de véhicules pour rétablir rapidement la circulation.</p>
+        <span class="service-link">Détails <i class="fas fa-arrow-down"></i></span>
+      </a>
+      <a href="#repartition" class="service-card reveal" style="text-decoration:none;color:inherit;">
+        <div class="service-icon"><i class="fas fa-broadcast-tower"></i></div>
+        <h3>Répartition</h3>
+        <p>Centre de coordination temps réel pour orchestrer chaque intervention.</p>
+        <span class="service-link">Détails <i class="fas fa-arrow-down"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PATROUILLE ===== -->
+<section class="service-detail" id="patrouille">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-image reveal">
+        <img src="images/IMG_0426.JPG" alt="Patrouille">
+        <div class="service-detail-icon-big"><i class="fas fa-car-side"></i></div>
+      </div>
+      <div class="reveal">
+        <span class="service-detail-tag">Service 24/7</span>
+        <h2>Patrouille <span>routière</span></h2>
+        <p>Nos équipes de patrouille assurent une présence permanente sur l'ensemble du tracé de l'autoroute. Leur rôle : prévenir, observer, alerter et intervenir.</p>
+        <p>Grâce à des véhicules équipés de communication directe avec le centre de répartition, chaque incident est détecté et traité dans les meilleurs délais.</p>
+        <div class="service-features-list">
+          <div class="item"><i class="fas fa-check-circle"></i><span>Patrouilles 24h/24 toute l'année</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Surveillance des voies & ouvrages</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Détection précoce d'incidents</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Présence dissuasive</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Communication temps réel</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Premiers secours en attendant les renforts</span></div>
+        </div>
+        <a href="contact.html" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Demander une intervention</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REMORQUAGE ===== -->
+<section class="service-detail reverse" id="remorquage">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-image reveal">
+        <img src="images/IMG_0439.JPG" alt="Remorquage">
+        <div class="service-detail-icon-big" style="background:var(--grad-secondary)"><i class="fas fa-truck-pickup"></i></div>
+      </div>
+      <div class="reveal">
+        <span class="service-detail-tag">Dépannage rapide</span>
+        <h2>Service de <span>remorquage</span></h2>
+        <p>Lorsqu'un véhicule est immobilisé sur l'autoroute — panne, accident ou incident — nos équipes de remorquage interviennent rapidement pour libérer la voie et sécuriser l'usager.</p>
+        <p>Notre flotte est composée de plusieurs types de véhicules adaptés : dépanneuses légères, plateaux et porte-voitures, capables d'évacuer toutes catégories de véhicules.</p>
+        <div class="service-features-list">
+          <div class="item"><i class="fas fa-check-circle"></i><span>Intervention rapide sur appel</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Véhicules de remorquage adaptés</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Sécurisation immédiate du périmètre</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Évacuation vers zones sécurisées</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Tarifs réglementés et transparents</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Personnel formé aux normes de sécurité</span></div>
+        </div>
+        <a href="contact.html" class="btn btn-primary"><i class="fas fa-truck"></i> Demander un remorquage</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RÉPARTITION ===== -->
+<section class="service-detail" id="repartition">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-image reveal">
+        <img src="images/REP.jpg" alt="Centre de répartition">
+        <div class="service-detail-icon-big" style="background:linear-gradient(135deg,var(--accent),#ff9800)"><i class="fas fa-broadcast-tower"></i></div>
+      </div>
+      <div class="reveal">
+        <span class="service-detail-tag">Salle répartiteur</span>
+        <h2>Centre de <span>répartition</span></h2>
+        <p>Le centre de répartition est le cerveau de notre dispositif. Opérationnel 24h/24, il reçoit les appels, traite les signalements, dispatche les équipes et coordonne toutes les interventions sur le réseau.</p>
+        <p>Doté d'outils technologiques modernes — radio, GPS, vidéosurveillance — il garantit une réactivité optimale et un suivi minutieux de chaque intervention.</p>
+        <div class="service-features-list">
+          <div class="item"><i class="fas fa-check-circle"></i><span>Gestion centralisée des appels</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Coordination multi-équipes</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Suivi GPS en temps réel</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Reporting & traçabilité complète</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Liaison avec autorités & secours</span></div>
+          <div class="item"><i class="fas fa-check-circle"></i><span>Permanence 24h/24, 7j/7</span></div>
+        </div>
+        <a href="contact.html" class="btn btn-primary"><i class="fas fa-headset"></i> Joindre le centre</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-band">
+  <div class="container cta-band-inner">
+    <h2>Besoin d'une intervention ?<br><span>Notre équipe est joignable 24h/24.</span></h2>
+    <a href="tel:+221338679314" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Appeler maintenant</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="MSA Services">
+        </a>
+        <p>Société sénégalaise spécialisée dans la gestion et l'exploitation des autoroutes à péage. Votre sécurité, notre vision.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+          <li><a href="apropos.html"><i class="fas fa-chevron-right"></i> À propos</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+          <li><a href="evenements.html"><i class="fas fa-chevron-right"></i> Événements</a></li>
+          <li><a href="galerie.html"><i class="fas fa-chevron-right"></i> Galerie</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#patrouille"><i class="fas fa-chevron-right"></i> Patrouille</a></li>
+          <li><a href="#remorquage"><i class="fas fa-chevron-right"></i> Remorquage</a></li>
+          <li><a href="#repartition"><i class="fas fa-chevron-right"></i> Répartition</a></li>
+          <li><a href="evenements.html"><i class="fas fa-chevron-right"></i> Gestion accidents</a></li>
+          <li><a href="evenements.html"><i class="fas fa-chevron-right"></i> Animaux en divagation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><p>VDN — Dakar, Sénégal,<br>Bande Verte Lot N° 58</p></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><p>+221 33 867 93 14</p></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><p>contact@msaservices.sn</p></div>
+        <form class="newsletter-form" onsubmit="event.preventDefault();alert('Inscription enregistrée !');">
+          <input type="email" placeholder="Votre email" required>
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 MSA SERVICES — Tous droits réservés.</div>
+      <div class="footer-bottom-links">
+        <a>Mentions légales</a>
+        <a>Politique de confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:+221" class="emergency-float"><i class="fas fa-phone-alt"></i></a>
+
+<script src="js/script.js"></script>
+</body>
+</html>

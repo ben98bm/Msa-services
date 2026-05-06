@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/
+*.psd
+*.ai
+*.mp4
+*.mov
+*.avi
+*.zip
+*.rar
+*.log

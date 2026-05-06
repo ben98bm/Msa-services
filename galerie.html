@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galerie — MSA SERVICES</title>
+<meta name="description" content="Découvrez en images le quotidien des équipes MSA SERVICES sur l'autoroute ILA TOUBA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/png" href="images/logo.png">
+<style>
+.gallery-item { transition: opacity 0.3s, transform 0.3s; }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 92%; max-height: 90vh; border-radius: var(--radius-md); }
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 50px; height: 50px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--dark);
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TOPBAR ===== -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-info">
+      <span><i class="fas fa-phone"></i>+221 33 867 93 14</span>
+      <span><i class="fas fa-envelope"></i> contact@msaservices.sn</span>
+      <span><i class="fas fa-clock"></i> 24h/24 — 7j/7</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="MSA Services"></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Accueil</a></li>
+      <li><a href="apropos.html" class="nav-link">À Propos</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="evenements.html" class="nav-link">Événements</a></li>
+      <li><a href="galerie.html" class="nav-link active">Galerie</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="tel:+221338679314" class="nav-link nav-cta"><i class="fas fa-headset"></i> Urgence 24/7</a></li>
+    </ul>
+    <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="page-header">
+  <div class="page-header-content">
+    <h1>Galerie</h1>
+    <p>Plongez au cœur du quotidien des équipes MSA SERVICES sur l'autoroute.</p>
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a>
+      <span>/</span>
+      <span>Galerie</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="services-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Notre Quotidien</span>
+      <h2 class="section-title">Le terrain en <span>images</span></h2>
+      <p class="section-subtitle">Filtrez par catégorie pour découvrir nos différentes activités sur le réseau.</p>
+    </div>
+
+    <div class="gallery-filters reveal">
+      <button class="filter-btn active" data-filter="all"><i class="fas fa-th"></i> Tout</button>
+      <button class="filter-btn" data-filter="patrouille"><i class="fas fa-car-side"></i> Patrouille</button>
+      <button class="filter-btn" data-filter="remorquage"><i class="fas fa-truck-pickup"></i> Remorquage</button>
+      <button class="filter-btn" data-filter="repartition"><i class="fas fa-broadcast-tower"></i> Répartition</button>
+      <button class="filter-btn" data-filter="equipe"><i class="fas fa-users"></i> Équipe</button>
+      <button class="filter-btn" data-filter="autoroute"><i class="fas fa-road"></i> Autoroute</button>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item reveal" data-category="patrouille" onclick="openLightbox(this)">
+        <img src="images/PAT-AP.jpg" alt="Patrouille">
+        <div class="gallery-item-overlay">
+          <h4>Patrouille</h4>
+          <span>Surveillance du réseau</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal" data-category="remorquage" onclick="openLightbox(this)">
+        <img src="images/Remorquagee.jpg" alt="Remorquage">
+        <div class="gallery-item-overlay">
+          <h4>Intervention de remorquage</h4>
+          <span>Évacuation rapide</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal" data-category="autoroute" onclick="openLightbox(this)">
+        <img src="images/dji_fly_20260429_111840 AM_0125_1777468965461_photo.jpg" alt="Autoroute">
+        <div class="gallery-item-overlay">
+          <h4>Autoroute ILA TOUBA</h4>
+          <span>Vue panoramique</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal" data-category="repartition" onclick="openLightbox(this)">
+        <img src="images/repartition.jpg" alt="Centre de répartition">
+        <div class="gallery-item-overlay">
+          <h4>Centre de répartition</h4>
+          <span>Coordination 24/7</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal" data-category="equipe" onclick="openLightbox(this)">
+        <img src="images/patrouille 16.46.31.jpg"Équipe">
+        <div class="gallery-item-overlay">
+          <h4>Notre équipe</h4>
+          <span>Cohésion et engagement</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal" data-category="autoroute" onclick="openLightbox(this)">
+        <img src="images/aire-touba-DgzU5wbm.jpg" alt="Vue d'autoroute">
+        <div class="gallery-item-overlay">
+          <h4>Tracé Dakar-Touba</h4>
+          <span>Infrastructure stratégique</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal" data-category="patrouille" onclick="openLightbox(this)">
+        <img src="images/patimg.jpg" alt="Patrouille jour">
+        <div class="gallery-item-overlay">
+          <h4>Patrouille de jour</h4>
+          <span>Présence dissuasive</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal" data-category="remorquage" onclick="openLightbox(this)">
+        <img src="images/d5d8e8b8-9524-4805-8d44-05d8759fddcf.JPG" alt="Dépanneuse">
+        <div class="gallery-item-overlay">
+          <h4>Flotte de dépannage</h4>
+          <span>Véhicules adaptés</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal" data-category="repartition" onclick="openLightbox(this)">
+        <img src="images/OPC.jpg"Salle de contrôle">
+        <div class="gallery-item-overlay">
+          <h4>Salle de contrôle</h4>
+          <span>Technologie & vigilance</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal" data-category="equipe" onclick="openLightbox(this)">
+        <img src="images/formation.JPG" alt="Briefing">
+        <div class="gallery-item-overlay">
+          <h4>Briefing matinal</h4>
+          <span>Préparation des équipes</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal" data-category="autoroute" onclick="openLightbox(this)">
+        <img src="images/peageBox.jpg" alt="Péage">
+        <div class="gallery-item-overlay">
+          <h4>Poste de péage</h4>
+          <span>Trafic régulé</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal" data-category="equipe" onclick="openLightbox(this)">
+        <img src="images/cropped-IMG-20201112-WA005111-768x1024.jpg" alt="Formation">
+        <div class="gallery-item-overlay">
+          <h4>Session de formation</h4>
+          <span>Amélioration continue</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-band">
+  <div class="container cta-band-inner">
+    <h2>Vous voulez en savoir plus<br>sur <span>nos opérations</span> ?</h2>
+    <a href="contact.html" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Contactez-nous</a>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-close" onclick="closeLightbox(event)"><i class="fas fa-times"></i></div>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="MSA Services">
+        </a>
+        <p>Société sénégalaise spécialisée dans la gestion et l'exploitation de l'autoroute à péage ILA TOUBA. Votre sécurité, notre engagement quotidien.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+          <li><a href="apropos.html"><i class="fas fa-chevron-right"></i> À propos</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+          <li><a href="evenements.html"><i class="fas fa-chevron-right"></i> Événements</a></li>
+          <li><a href="galerie.html"><i class="fas fa-chevron-right"></i> Galerie</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#patrouille"><i class="fas fa-chevron-right"></i> Patrouille</a></li>
+          <li><a href="services.html#remorquage"><i class="fas fa-chevron-right"></i> Remorquage</a></li>
+          <li><a href="services.html#repartition"><i class="fas fa-chevron-right"></i> Répartition</a></li>
+          <li><a href="evenements.html"><i class="fas fa-chevron-right"></i> Gestion accidents</a></li>
+          <li><a href="evenements.html"><i class="fas fa-chevron-right"></i> Animaux en divagation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><p>VDN — Dakar, Sénégal,<br>Bande Verte Lot N° 58</p></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><p>+221 33 867 93 14</p></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><p>contact@msaservices.sn</p></div>
+        <form class="newsletter-form" onsubmit="event.preventDefault();alert('Inscription enregistrée !');">
+          <input type="email" placeholder="Votre email" required>
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 MSA SERVICES — Tous droits réservés.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">CGU</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:+221338679314" class="emergency-float"><i class="fas fa-phone-alt"></i></a>
+
+<script src="js/script.js"></script>
+<script>
+function openLightbox(el) {
+  const img = el.querySelector('img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  lightboxImg.src = img.src;
+  lightbox.classList.add('active');
+}
+function closeLightbox(e) {
+  if (e.target.id === 'lightbox' || e.target.closest('.lightbox-close')) {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('active');
+});
+</script>
+</body>
+</html>

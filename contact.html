@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — MSA SERVICES</title>
+<meta name="description" content="Contactez MSA SERVICES, gestionnaire de l'autoroute ILA TOUBA. Service joignable 24h/24, 7j/7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/png" href="images/logo.png">
+<style>
+.map-wrapper {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  height: 450px;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  position: relative;
+}
+.map-svg-big {
+  width: 100%;
+  height: 100%;
+}
+.map-info {
+  position: absolute;
+  bottom: 24px; left: 24px;
+  background: white;
+  padding: 18px 22px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.map-info .pin-icon {
+  width: 50px; height: 50px;
+  background: var(--grad-primary);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.3rem;
+}
+.map-info strong { display: block; color: var(--dark); font-size: 1rem; }
+.map-info span { color: var(--gray-500); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<!-- ===== TOPBAR ===== -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-info">
+      <span><i class="fas fa-phone"></i> +221 33 867 93 14</span>
+      <span><i class="fas fa-envelope"></i> contact@msaservices.sn</span>
+      <span><i class="fas fa-clock"></i> 24h/24 — 7j/7</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="MSA Services"></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Accueil</a></li>
+      <li><a href="apropos.html" class="nav-link">À Propos</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="evenements.html" class="nav-link">Événements</a></li>
+      <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+      <li><a href="contact.html" class="nav-link active">Contact</a></li>
+      <li><a href="tel:+221" class="nav-link nav-cta"><i class="fas fa-headset"></i> Urgence 24/7</a></li>
+    </ul>
+    <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="page-header">
+  <div class="page-header-content">
+    <h1>Contactez-nous</h1>
+    <p>Notre équipe est à votre écoute 24h/24, 7j/7. N'hésitez pas à nous joindre pour toute question, urgence ou demande.</p>
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a>
+      <span>/</span>
+      <span>Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="services-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info-list reveal">
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-phone-alt"></i></div>
+          <div>
+            <h4>Téléphone d'urgence</h4>
+            <p><a href="tel:+221338679314">+221 33 867 93 14</a></p>
+            <p style="font-size:0.85rem;color:var(--secondary);font-weight:600;margin-top:4px;">Disponible 24h/24 — 7j/7</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:contact@msaservices.sn">contact@msaservices.sn</a></p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h4>Siège social</h4>
+            <p>VDN — Dakar, Sénégal,<br>Bande Verte Lot N° 58<br>République du Sénégal</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <h4>Horaires</h4>
+            <p>Bureaux : Lun-Ven, 8h - 18h<br>Service opérationnel : 24/7</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal">
+        <h3><i class="fas fa-paper-plane" style="color:var(--secondary);margin-right:10px;"></i> Envoyez-nous un message</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nom complet *</label>
+            <input type="text" placeholder="Votre nom" required>
+          </div>
+          <div class="form-group">
+            <label>Téléphone *</label>
+            <input type="tel" placeholder="+221 ..." required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" placeholder="exemple@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Type de demande *</label>
+          <select required>
+            <option value="">— Sélectionnez —</option>
+            <option>Information générale</option>
+            <option>Signalement d'incident</option>
+            <option>Demande de remorquage</option>
+            <option>Réclamation</option>
+            <option>Partenariat</option>
+            <option>Recrutement</option>
+            <option>Presse / Média</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Sujet</label>
+          <input type="text" placeholder="Sujet de votre message">
+        </div>
+        <div class="form-group">
+          <label>Votre message *</label>
+          <textarea rows="5" placeholder="Décrivez votre demande en détail..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+          <i class="fas fa-paper-plane"></i> Envoyer le message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAP ===== -->
+<section class="about" style="padding-top:0">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Localisation</span>
+      <h2 class="section-title">Notre <span>zone d'activité</span></h2>
+      <p class="section-subtitle">Les autoroutes s'étend sur 195 km, reliant AIBD à Touba à travers Thies, AIBD - Mbour - Thiadiaye et Pont Foundiougne.</p>
+    </div>
+    <div class="map-wrapper reveal">
+      <svg class="map-svg-big" viewBox="0 0 1000 450" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="mapBg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e8f5e9"/>
+            <stop offset="100%" stop-color="#a5d6a7"/>
+          </linearGradient>
+          <filter id="shadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+          </filter>
+        </defs>
+        <rect width="1000" height="450" fill="url(#mapBg)"/>
+
+        <!-- Decorative dots -->
+        <g opacity="0.3">
+          <circle cx="100" cy="80" r="3" fill="#1e3a8a"/>
+          <circle cx="300" cy="60" r="3" fill="#1e3a8a"/>
+          <circle cx="500" cy="40" r="3" fill="#1e3a8a"/>
+          <circle cx="700" cy="80" r="3" fill="#1e3a8a"/>
+          <circle cx="900" cy="120" r="3" fill="#1e3a8a"/>
+          <circle cx="200" cy="380" r="3" fill="#1e3a8a"/>
+          <circle cx="600" cy="400" r="3" fill="#1e3a8a"/>
+        </g>
+
+        <!-- Highway curve -->
+        <path d="M 80 350 Q 300 280 500 220 T 920 100"
+              stroke="#1e3a8a" stroke-width="10" fill="none"
+              stroke-linecap="round" filter="url(#shadow)"/>
+        <path d="M 80 350 Q 300 280 500 220 T 920 100"
+              stroke="#fcd116" stroke-width="2" fill="none"
+              stroke-dasharray="14 12"/>
+
+        <!-- DAKAR -->
+        <circle cx="80" cy="350" r="20" fill="#e63946" stroke="white" stroke-width="4" filter="url(#shadow)"/>
+        <text x="80" y="395" font-family="Poppins" font-size="18" font-weight="800" fill="#0a2540" text-anchor="middle">AIBD</text>
+        <text x="80" y="415" font-family="Poppins" font-size="11" fill="#475569" text-anchor="middle">Capitale</text>
+
+        <!-- DIAMNIADIO -->
+        <circle cx="220" cy="320" r="13" fill="#4ca03e" stroke="white" stroke-width="3"/>
+        <text x="220" y="350" font-family="Poppins" font-size="13" font-weight="700" fill="#0a2540" text-anchor="middle">Thies</text>
+        <text x="220" y="365" font-family="Poppins" font-size="10" fill="#475569" text-anchor="middle">Siège MSA</text>
+
+        <!-- THIÈS -->
+        <circle cx="430" cy="240" r="13" fill="#fcd116" stroke="white" stroke-width="3"/>
+        <text x="430" y="270" font-family="Poppins" font-size="13" font-weight="700" fill="#0a2540" text-anchor="middle">Mbour</text>
+
+        <!-- MBACKÉ -->
+        <circle cx="700" cy="160" r="13" fill="#4ca03e" stroke="white" stroke-width="3"/>
+        <text x="700" y="190" font-family="Poppins" font-size="13" font-weight="700" fill="#0a2540" text-anchor="middle">Thiadiaye</text>
+
+        <!-- TOUBA -->
+        <circle cx="920" cy="100" r="20" fill="#e63946" stroke="white" stroke-width="4" filter="url(#shadow)"/>
+        <text x="920" y="80" font-family="Poppins" font-size="18" font-weight="800" fill="#0a2540" text-anchor="middle">TOUBA</text>
+        <text x="920" y="60" font-family="Poppins" font-size="11" fill="#475569" text-anchor="middle">Ville sainte</text>
+
+        <!-- Animated pulse -->
+        <circle cx="500" cy="220" r="20" fill="#1e3a8a" opacity="0.2">
+          <animate attributeName="r" values="20;40;20" dur="2.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.4;0;0.4" dur="2.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="500" cy="220" r="8" fill="#1e3a8a" stroke="white" stroke-width="3"/>
+
+        <!-- Distance label -->
+        <text x="500" y="430" font-family="Poppins" font-size="13" fill="#475569" text-anchor="middle" font-weight="500">Exploitation de 195 km</text>
+      </svg>
+      <div class="map-info">
+        <div class="pin-icon"><i class="fas fa-building"></i></div>
+        <div>
+          <strong>MSA SERVICES</strong>
+          <span>Direction General, Dakar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="services-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Questions Fréquentes</span>
+      <h2 class="section-title">Vos questions, nos <span>réponses</span></h2>
+      <p class="section-subtitle">Les questions les plus fréquemment posées par les usagers de l'autoroute ILA TOUBA.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          <span>Comment signaler un incident ou une urgence sur l'autoroute ?</span>
+          <span class="icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-answer">
+          <p>En cas d'urgence, composez immédiatement notre numéro disponible 24h/24, 7j/7. Vous pouvez également utiliser les bornes d'appel d'urgence présentes le long du tracé. Notre centre de répartition coordonnera l'envoi d'une équipe dans les meilleurs délais.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          <span>Quel est le délai moyen d'intervention ?</span>
+          <span class="icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-answer">
+          <p>Notre délai moyen d'intervention est inférieur à 15 minutes sur l'ensemble du réseau. Nos équipes sont positionnées à des points stratégiques pour garantir une réactivité optimale, de Dakar à Touba.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          <span>Le service de remorquage est-il payant ?</span>
+          <span class="icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-answer">
+          <p>Le remorquage suit une tarification réglementée et transparente. Le coût dépend du type de véhicule et de la distance. Notre objectif est avant tout d'assurer votre sécurité et la fluidité du trafic.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          <span>Que faire en cas de panne sur l'autoroute ?</span>
+          <span class="icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-answer">
+          <p>Garez-vous sur la bande d'arrêt d'urgence, allumez vos feux de détresse, sortez du véhicule par le côté opposé à la circulation, placez le triangle de signalisation à 30 mètres, et appelez notre service d'urgence. Nos équipes interviendront rapidement.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          <span>Êtes-vous joignables les jours fériés ?</span>
+          <span class="icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-answer">
+          <p>Oui, absolument. Notre service opérationnel fonctionne 24 heures sur 24, 7 jours sur 7, 365 jours par an. Aucune interruption, même pendant les jours fériés et les fêtes religieuses.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          <span>Comment devenir partenaire de MSA SERVICES ?</span>
+          <span class="icon"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="faq-answer">
+          <p>Pour toute proposition de partenariat institutionnel ou commercial, contactez-nous via le formulaire ci-dessus en sélectionnant "Partenariat". Notre direction reviendra vers vous rapidement pour échanger.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-band">
+  <div class="container cta-band-inner">
+    <h2>Une urgence ?<br>Notre numéro est <span>actif 24/7</span></h2>
+    <a href="tel:+221" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> +221 33 XXX XX XX</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="MSA Services">
+        </a>
+        <p>Société sénégalaise spécialisée dans la gestion et l'exploitation de l'autoroute à péage ILA TOUBA. Votre sécurité, notre engagement quotidien.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+          <li><a href="apropos.html"><i class="fas fa-chevron-right"></i> À propos</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+          <li><a href="evenements.html"><i class="fas fa-chevron-right"></i> Événements</a></li>
+          <li><a href="galerie.html"><i class="fas fa-chevron-right"></i> Galerie</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#patrouille"><i class="fas fa-chevron-right"></i> Patrouille</a></li>
+          <li><a href="services.html#remorquage"><i class="fas fa-chevron-right"></i> Remorquage</a></li>
+          <li><a href="services.html#repartition"><i class="fas fa-chevron-right"></i> Répartition</a></li>
+          <li><a href="evenements.html"><i class="fas fa-chevron-right"></i> Gestion accidents</a></li>
+          <li><a href="evenements.html"><i class="fas fa-chevron-right"></i> Animaux en divagation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><p>Centre d'exploitation,<br>Diamniadio — Dakar, Sénégal</p></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><p>+221 33 XXX XX XX</p></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><p>contact@msaservices.sn</p></div>
+        <form class="newsletter-form" onsubmit="event.preventDefault();alert('Inscription enregistrée !');">
+          <input type="email" placeholder="Votre email" required>
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 MSA SERVICES — Tous droits réservés.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">CGU</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:+221" class="emergency-float"><i class="fas fa-phone-alt"></i></a>
+
+<script src="js/script.js"></script>
+</body>
+</html>

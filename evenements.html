@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion des Événements — MSA SERVICES</title>
+<meta name="description" content="MSA SERVICES gère tous types d'événements sur l'autoroute ILA TOUBA : accidents, pannes, remorquages, animaux en divagation et incidents divers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/png" href="images/logo.png">
+<style>
+.event-detail {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  transition: var(--transition);
+}
+.event-detail:hover { box-shadow: var(--shadow-xl); transform: translateY(-4px); }
+.event-detail.alt { grid-template-columns: 1.2fr 0.8fr; }
+.event-detail.alt .event-detail-img { order: 2; }
+.event-detail-img {
+  position: relative;
+  min-height: 300px;
+}
+.event-detail-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+.event-detail-img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.4), transparent);
+  z-index: 1;
+}
+.event-detail-tag-big {
+  position: absolute;
+  top: 20px; left: 20px;
+  padding: 8px 18px;
+  background: var(--danger);
+  color: white;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 50px;
+  z-index: 2;
+}
+.event-detail-tag-big.yellow { background: var(--accent); color: var(--dark); }
+.event-detail-tag-big.green { background: var(--secondary); }
+.event-detail-tag-big.blue { background: var(--primary); }
+.event-detail-body { padding: 40px; }
+.event-detail-body h3 { font-size: 1.6rem; color: var(--dark); margin-bottom: 14px; }
+.event-detail-body > p { color: var(--gray-600); margin-bottom: 20px; }
+.event-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
+.event-checklist .item {
+  display: flex; gap: 10px; align-items: center;
+  padding: 10px 14px;
+  background: var(--gray-50);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+.event-checklist .item i { color: var(--secondary); }
+.event-meta-row {
+  display: flex;
+  gap: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--gray-200);
+  flex-wrap: wrap;
+}
+.event-meta-row .meta { display: flex; gap: 8px; align-items: center; color: var(--gray-600); font-size: 0.88rem; }
+.event-meta-row .meta i { color: var(--primary); }
+
+@media(max-width: 768px) {
+  .event-detail, .event-detail.alt { grid-template-columns: 1fr; }
+  .event-detail.alt .event-detail-img { order: 0; }
+  .event-checklist { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TOPBAR ===== -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-info">
+      <span><i class="fas fa-phone"></i> +221 33 867 93 14</span>
+      <span><i class="fas fa-envelope"></i> contact@msaservices.sn</span>
+      <span><i class="fas fa-clock"></i> 24h/24 — 7j/7</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="MSA Services"></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Accueil</a></li>
+      <li><a href="apropos.html" class="nav-link">À Propos</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="evenements.html" class="nav-link active">Événements</a></li>
+      <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="tel:+221" class="nav-link nav-cta"><i class="fas fa-headset"></i> Urgence 24/7</a></li>
+    </ul>
+    <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="page-header">
+  <div class="page-header-content">
+    <h1>Gestion des Événements</h1>
+    <p>Réactivité, professionnalisme et coordination pour gérer chaque incident sur l'autoroute.</p>
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a>
+      <span>/</span>
+      <span>Gestion des Événements</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTRO ===== -->
+<section class="services-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Événements gérés</span>
+      <h2 class="section-title">Une réponse adaptée à <span>chaque situation</span></h2>
+      <p class="section-subtitle">Sur l'autoroute, l'imprévu fait partie du quotidien. Nos équipes sont entraînées à gérer toute typologie d'événement avec la même rigueur et la même réactivité.</p>
+    </div>
+
+    <!-- Accidents -->
+    <div class="event-detail reveal">
+      <div class="event-detail-img">
+        <span class="event-detail-tag-big">Urgence</span>
+        <img src="images/PAT-AP.jpg" alt="Accident routier">
+      </div>
+      <div class="event-detail-body">
+        <h3><i class="fas fa-car-crash" style="color:var(--danger);margin-right:10px;"></i> Gestion des accidents</h3>
+        <p>Lorsqu'un accident survient sur l'autoroute, chaque seconde compte. Nos équipes interviennent immédiatement pour sécuriser le périmètre, porter assistance aux usagers et coordonner les opérations avec les services de secours.</p>
+        <div class="event-checklist">
+          <div class="item"><i class="fas fa-check"></i><span>Sécurisation immédiate du périmètre</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Premiers secours & assistance</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Liaison avec gendarmerie & pompiers</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Évacuation des véhicules accidentés</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Nettoyage & remise en état de la voie</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Rapport d'intervention détaillé</span></div>
+        </div>
+        <div class="event-meta-row">
+          <span class="meta"><i class="fas fa-stopwatch"></i> Délai moyen : &lt; 15 min</span>
+          <span class="meta"><i class="fas fa-shield-alt"></i> Disponible 24/7</span>
+          <span class="meta"><i class="fas fa-users"></i> Équipes formées au secourisme</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Remorquage -->
+    <div class="event-detail alt reveal">
+      <div class="event-detail-img">
+        <span class="event-detail-tag-big yellow">Dépannage</span>
+        <img src="images/Remorquagee.jpg" alt="Remorquage">
+      </div>
+      <div class="event-detail-body">
+        <h3><i class="fas fa-truck-pickup" style="color:#ff9800;margin-right:10px;"></i> Remorquage de véhicules</h3>
+        <p>Un véhicule en panne ou immobilisé représente un risque pour la circulation. Nos dépanneuses spécialisées libèrent rapidement la voie tout en accompagnant l'usager dans ses démarches.</p>
+        <div class="event-checklist">
+          <div class="item"><i class="fas fa-check"></i><span>Diagnostic rapide sur place</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Remorquage adapté au véhicule</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Évacuation vers zone sécurisée</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Flotte légère, plateaux & poids lourds</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Tarifs réglementés transparents</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Information continue de l'usager</span></div>
+        </div>
+        <div class="event-meta-row">
+          <span class="meta"><i class="fas fa-truck"></i> Flotte multi-types</span>
+          <span class="meta"><i class="fas fa-clock"></i> Service 24/7</span>
+          <span class="meta"><i class="fas fa-route"></i> Couverture totale</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animaux -->
+    <div class="event-detail reveal">
+      <div class="event-detail-img">
+        <span class="event-detail-tag-big green">Sécurité</span>
+        <img src="images/hq720-3.jpg" alt="Animaux en divagation">
+      </div>
+      <div class="event-detail-body">
+        <h3><i class="fas fa-paw" style="color:var(--secondary);margin-right:10px;"></i> Animaux en divagation</h3>
+        <p>Les animaux égarés sur l'autoroute représentent un danger majeur, à la fois pour les usagers et pour l'animal lui-même. Nos équipes interviennent dans le respect du bien-être animal pour évacuer ces situations à risque.</p>
+        <div class="event-checklist">
+          <div class="item"><i class="fas fa-check"></i><span>Repérage et signalisation</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Capture sécurisée & bienveillante</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Évacuation hors des voies</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Coordination avec les éleveurs</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Sensibilisation des riverains</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Restitution aux propriétaires</span></div>
+        </div>
+        <div class="event-meta-row">
+          <span class="meta"><i class="fas fa-paw"></i> Respect du bien-être animal</span>
+          <span class="meta"><i class="fas fa-shield-alt"></i> Sans risque pour l'animal</span>
+          <span class="meta"><i class="fas fa-handshake"></i> Travail communautaire</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Autres événements -->
+    <div class="event-detail alt reveal">
+      <div class="event-detail-img">
+        <span class="event-detail-tag-big blue">Divers</span>
+        <img src="images/viabilite.jpg" alt="Autres incidents">
+      </div>
+      <div class="event-detail-body">
+        <h3><i class="fas fa-exclamation-triangle" style="color:var(--primary);margin-right:10px;"></i> Autres incidents</h3>
+        <p>Au-delà des situations principales, nos équipes prennent en charge tous types d'imprévus pour maintenir la qualité du service et la sécurité du réseau.</p>
+        <div class="event-checklist">
+          <div class="item"><i class="fas fa-check"></i><span>Objets sur la chaussée</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Déversements & nuisances</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Dégâts liés aux intempéries</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Incidents de signalisation</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Feux de brousse limitrophes</span></div>
+          <div class="item"><i class="fas fa-check"></i><span>Assistance aux usagers vulnérables</span></div>
+        </div>
+        <div class="event-meta-row">
+          <span class="meta"><i class="fas fa-tools"></i> Polyvalence</span>
+          <span class="meta"><i class="fas fa-clock"></i> Réactivité totale</span>
+          <span class="meta"><i class="fas fa-headset"></i> Coordination centralisée</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats-section">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:50px">
+      <span class="section-tag" style="background:rgba(252,209,22,0.15);color:var(--accent)">Quelques chiffres</span>
+      <h2 class="section-title" style="color:white">Une équipe <span style="color:var(--accent)">éprouvée</span></h2>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat-box">
+        <div class="icon"><i class="fas fa-car-crash"></i></div>
+        <span class="number" data-count="1000">0</span>
+        <span class="label">Accidents traités</span>
+      </div>
+      <div class="stat-box">
+        <div class="icon"><i class="fas fa-truck-pickup"></i></div>
+        <span class="number" data-count="700">0</span>
+        <span class="label">Remorquages effectués</span>
+      </div>
+      <div class="stat-box">
+        <div class="icon"><i class="fas fa-paw"></i></div>
+        <span class="number" data-count="50">0</span>
+        <span class="label">Animaux évacués</span>
+      </div>
+      <div class="stat-box">
+        <div class="icon"><i class="fas fa-stopwatch"></i></div>
+        <span class="number" data-count="15">0</span>
+        <span class="label">Min. délai moyen</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="process">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Notre Méthode</span>
+      <h2 class="section-title">Le déroulement d'une <span>intervention</span></h2>
+      <p class="section-subtitle">Un protocole strict, éprouvé et amélioré en continu, pour chaque type d'événement.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="process-num">1</div>
+        <h4>Détection</h4>
+        <p>Réception de l'appel ou détection par patrouille / vidéosurveillance.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">2</div>
+        <h4>Mobilisation</h4>
+        <p>Le centre de répartition coordonne l'équipe la plus proche et la mieux adaptée.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">3</div>
+        <h4>Action</h4>
+        <p>Sécurisation, prise en charge, remorquage, capture ou évacuation selon le cas.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">4</div>
+        <h4>Clôture</h4>
+        <p>Documentation complète, retour d'expérience et amélioration continue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-band">
+  <div class="container cta-band-inner">
+    <h2>Une situation à signaler<br>sur <span>L'autoroute</span> ?</h2>
+    <a href="tel:+221338679314" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Signaler un événement</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="MSA Services">
+        </a>
+        <p>Société sénégalaise spécialisée dans la gestion et l'exploitation des autoroutes à péage. Votre sécurité, notre vision.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+          <li><a href="apropos.html"><i class="fas fa-chevron-right"></i> À propos</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+          <li><a href="evenements.html"><i class="fas fa-chevron-right"></i> Événements</a></li>
+          <li><a href="galerie.html"><i class="fas fa-chevron-right"></i> Galerie</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#patrouille"><i class="fas fa-chevron-right"></i> Patrouille</a></li>
+          <li><a href="services.html#remorquage"><i class="fas fa-chevron-right"></i> Remorquage</a></li>
+          <li><a href="services.html#repartition"><i class="fas fa-chevron-right"></i> Répartition</a></li>
+          <li><a href="evenements.html"><i class="fas fa-chevron-right"></i> Gestion accidents</a></li>
+          <li><a href="evenements.html"><i class="fas fa-chevron-right"></i> Animaux en divagation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><p>VDN — Dakar, Sénégal,<br>Bande Verte Lot N° 58</p></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><p>+221 33 867 93 14</p></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><p>contact@msaservices.sn</p></div>
+        <form class="newsletter-form" onsubmit="event.preventDefault();alert('Inscription enregistrée !');">
+          <input type="email" placeholder="Votre email" required>
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 MSA SERVICES — Tous droits réservés.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">CGU</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:+221" class="emergency-float"><i class="fas fa-phone-alt"></i></a>
+
+<script src="js/script.js"></script>
+</body>
+</html>
