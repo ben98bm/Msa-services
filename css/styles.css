@@ -269,7 +269,7 @@ h1, h2, h3, h4, h5, h6 {
    ============================================ */
 .page-header {
   background: var(--grad-dark),
-              url(../images/Thiadiaye.png) center/cover;
+              url(../images/Thiadiaye.jpg) center/cover;
   background-blend-mode: overlay;
   padding: 100px 24px 80px;
   text-align: center;
@@ -362,7 +362,7 @@ section { padding: 100px 0; }
   display: flex;
   align-items: center;
   background: var(--grad-dark),
-              url(../images/Thiese--.png) center/cover;
+              url(../images/T-Thiese.jpg) center/cover;
   background-blend-mode: overlay;
   overflow: hidden;
 }
