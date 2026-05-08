@@ -1342,6 +1342,263 @@ section { padding: 100px 0; }
 .team-social a:hover { background: var(--primary); color: white; transform: translateY(-2px); }
 
 /* ============================================
+   INFRASTRUCTURES SECTION
+   --infra-card-radius   : arrondi des cartes
+   --infra-image-height  : hauteur de la zone image
+   --infra-gap           : espacement entre cartes
+   ============================================ */
+.infrastructures {
+  --infra-card-radius: var(--radius-lg);
+  --infra-image-height: 200px;
+  --infra-gap: 28px;
+
+  background: var(--gray-50);
+  padding: 100px 0;
+}
+
+/* --- Carte SVG du Sénégal --- */
+.infra-map {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-100);
+  margin-bottom: 60px;
+  transition: var(--transition);
+}
+.infra-map:hover {
+  box-shadow: var(--shadow-lg);
+}
+.infra-map svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+/* --- Grille des 4 cartes --- */
+.infra-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--infra-gap);
+  margin-bottom: 60px;
+}
+
+.infra-card {
+  background: var(--white);
+  border-radius: var(--infra-card-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  border-top: 5px solid transparent;
+}
+.infra-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Couleur de bordure haute par carte */
+.infra-card--blue   { border-top-color: var(--primary); }
+.infra-card--green  { border-top-color: var(--secondary); }
+.infra-card--yellow { border-top-color: #f59e0b; }
+.infra-card--red    { border-top-color: var(--danger); }
+
+/* --- Zone image (placeholder ou img) --- */
+.infra-image {
+  height: var(--infra-image-height);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
+}
+.infra-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.infra-card:hover .infra-image img {
+  transform: scale(1.06);
+}
+.infra-image-note {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-align: center;
+  padding: 0 30px;
+  letter-spacing: 0.5px;
+}
+
+/* Fond du placeholder coloré selon la carte */
+.infra-card--blue   .infra-image { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+.infra-card--green  .infra-image { background: linear-gradient(135deg, #dcfce7, #bbf7d0); }
+.infra-card--yellow .infra-image { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+.infra-card--red    .infra-image { background: linear-gradient(135deg, #fee2e2, #fecaca); }
+
+/* --- Corps de la carte --- */
+.infra-body {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.infra-type {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 5px 14px;
+  background: var(--gray-100);
+  color: var(--gray-700);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 50px;
+  margin-bottom: 14px;
+}
+.infra-card--blue   .infra-type { background: rgba(30, 58, 138, 0.1);  color: var(--primary); }
+.infra-card--green  .infra-type { background: rgba(76, 160, 62, 0.1);  color: var(--secondary); }
+.infra-card--yellow .infra-type { background: rgba(245, 158, 11, 0.12); color: #b45309; }
+.infra-card--red    .infra-type { background: rgba(230, 57, 70, 0.1);  color: var(--danger); }
+
+.infra-body h3 {
+  font-size: 1.3rem;
+  color: var(--dark);
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+.infra-arrow {
+  color: var(--gray-400);
+  font-weight: 400;
+  margin: 0 4px;
+}
+.infra-card--blue   h3 .infra-arrow { color: var(--primary); }
+.infra-card--green  h3 .infra-arrow { color: var(--secondary); }
+.infra-card--yellow h3 .infra-arrow { color: #f59e0b; }
+.infra-card--red    h3 .infra-arrow { color: var(--danger); }
+
+/* --- Distance en grand --- */
+.infra-distance {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding: 16px 0;
+  border-top: 1px solid var(--gray-100);
+  border-bottom: 1px solid var(--gray-100);
+}
+.infra-distance strong {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--dark);
+}
+.infra-distance span {
+  font-size: 1.1rem;
+  color: var(--gray-500);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.infra-card--blue   .infra-distance strong { color: var(--primary); }
+.infra-card--green  .infra-distance strong { color: var(--secondary); }
+.infra-card--yellow .infra-distance strong { color: #b45309; }
+.infra-card--red    .infra-distance strong { color: var(--danger); }
+
+.infra-body p {
+  color: var(--gray-600);
+  font-size: 0.95rem;
+  margin-bottom: 22px;
+  flex: 1;
+}
+
+/* --- Tags caractéristiques --- */
+.infra-features {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.infra-features li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 13px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 50px;
+  font-size: 0.82rem;
+  color: var(--gray-700);
+}
+.infra-features li i {
+  font-size: 0.8rem;
+}
+.infra-card--blue   .infra-features li i { color: var(--primary); }
+.infra-card--green  .infra-features li i { color: var(--secondary); }
+.infra-card--yellow .infra-features li i { color: #f59e0b; }
+.infra-card--red    .infra-features li i { color: var(--danger); }
+
+/* --- Stats récapitulatives --- */
+.infra-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-100);
+}
+.infra-stat {
+  text-align: center;
+  padding: 12px;
+  border-right: 1px solid var(--gray-100);
+}
+.infra-stat:last-child { border-right: none; }
+.infra-stat strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2.6rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 8px;
+  background: var(--grad-mixed);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.infra-stat span {
+  color: var(--gray-600);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+  .infra-grid  { grid-template-columns: 1fr; }
+  .infra-stats { grid-template-columns: repeat(2, 1fr); }
+  .infra-stat  { border-right: none; border-bottom: 1px solid var(--gray-100); padding-bottom: 20px; }
+  .infra-stat:nth-child(3),
+  .infra-stat:nth-child(4) { border-bottom: none; }
+}
+@media (max-width: 576px) {
+  .infrastructures   { padding: 70px 0; }
+  .infra-map         { padding: 14px; }
+  .infra-stats       { grid-template-columns: 1fr; padding: 24px; }
+  .infra-stat        { border-bottom: 1px solid var(--gray-100); border-right: none; }
+  .infra-stat:last-child { border-bottom: none; }
+  .infra-distance strong { font-size: 2.4rem; }
+}
+
+/* ============================================
    VALUES
    ============================================ */
 .values-grid {
