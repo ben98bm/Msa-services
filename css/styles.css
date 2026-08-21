@@ -2111,3 +2111,139 @@ body.page-entering > footer { animation-delay: 0.36s; }
   .hero-floating-stat { display: none; }
   .cta-band-inner { flex-direction: column; text-align: center; }
 }
+
+/* ============================================
+   HERO VIDEO BACKGROUND (Vimeo iframe) — Responsive
+   Technique : aspect-ratio + min-width/min-height 100%
+   Garantit un remplissage propre sur tous les formats (16:9, 4:3, portrait, ultra-wide)
+   ============================================ */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-video-wrapper {
+  position: absolute;
+  inset: 0;                     /* top:0 right:0 bottom:0 left:0 */
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-video-iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  aspect-ratio: 16 / 9;         /* Maintient les proportions 16:9 partout */
+  border: 0;
+  pointer-events: none;
+}
+
+/* Fallback pour anciens navigateurs sans support aspect-ratio */
+@supports not (aspect-ratio: 16 / 9) {
+  .hero-video-iframe {
+    width: 177.78vh;            /* 100vh * 16/9 */
+    height: 100vh;
+    min-width: 100vw;
+    min-height: 56.25vw;        /* 100vw * 9/16 */
+  }
+}
+
+/* Overlay sombre AU-DESSUS de la vidéo */
+.hero::before {
+  z-index: 1 !important;
+}
+
+/* Vague blanche AU-DESSUS de la vidéo */
+.hero::after {
+  z-index: 3 !important;
+}
+
+/* Contenu du hero au-dessus de l'overlay */
+.hero-grid,
+.hero-text,
+.hero-visual,
+.hero-badge,
+.hero h1,
+.hero p,
+.hero-buttons,
+.hero-card-main,
+.hero-floating-stat {
+  position: relative;
+  z-index: 2;
+}
+
+/* Sur mobile, on cache la vidéo (économie données/batterie) */
+@media (max-width: 768px) {
+  .hero-video-wrapper {
+    display: none;
+  }
+}
+
+
+/* ============================================
+   ABOUT VIDEO (Vimeo en boucle dans la section À Propos)
+   Le conteneur s'adapte automatiquement au ratio 16:9 de la vidéo
+   → PAS D'ESPACE VIDE autour de la vidéo
+   ============================================ */
+.about-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;         /* Ratio naturel de la vidéo */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  background: var(--gray-100);
+}
+
+.about-video-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.about-video-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Effet de survol subtil */
+.about-video::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 60%, rgba(30, 58, 138, 0.15));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Badge 10+ ans conservé en superposition */
+.about-video .about-experience {
+  z-index: 3;
+}
+
+/* Alignement de la grille : items en haut pour éviter l'espace mort */
+.about-grid {
+  align-items: center;          /* fallback */
+}
+.about .about-grid:has(.about-video) {
+  align-items: center;
+}
+
+/* Sur mobile, la vidéo garde son ratio 16:9 (auto-ajusté) */
+@media (max-width: 576px) {
+  .about-video .about-experience {
+    padding: 18px 22px;
+  }
+  .about-video .about-experience strong {
+    font-size: 2rem;
+  }
+}
