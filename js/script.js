@@ -282,3 +282,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (href === currentPage) link.classList.add('active');
   });
 });
+
+
